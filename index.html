@@ -4,539 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Last Outpost Deckbuilder</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-            padding: 10px;
-        }
-        .grid-item {
-            position: relative;
-            text-align: center;
-        }
-        .grid-item img {
-            width: 100%;
-            height: auto;
-            max-width: 150px;
-            max-height: 200px;
-            transition: transform 0.2s, z-index 0.2s;
-            position: relative;
-        }
-        .grid-item img:hover {
-            transform: scale(2);
-            z-index: 10;
-        }
-        .counter {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 5px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5px;
-        }
-        .counter button {
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 0 5px;
-        }
-        .total-counter {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        button {
-            margin: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-        .reset-button {
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        h2 {
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>The Last Outpost Deckbuilder</h1>
     <div class="total-counter">Selected: <span id="totalSelected">0</span></div>
 
-    <h2>Survivors</h2>
-    <div class="grid-container">
-        <!-- Repeat this block for each image in Survivors -->
-        <div class="grid-item">
-            <img src="images/00.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/01.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/02.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/03.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/04.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/05.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/06.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/07.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/08.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/09.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/10.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/11.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/12.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/13.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/14.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/15.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/16.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/17.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/18.jpg" alt="Survivor 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/19.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/20.jpg" alt="Survivor 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-    </div>
+    <h2>Survivors <button class="toggle-button" onclick="toggleSection('survivors')">▼</button></h2>
+    <div class="grid-container" id="survivors-container"></div>
 
-    <h2>Gear</h2>
-    <div class="grid-container">
-        <!-- Repeat this block for each image in Gear -->
-        <div class="grid-item">
-            <img src="images/21.jpg" alt="Gear 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/22.jpg" alt="Gear 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/23.jpg" alt="Gear 3">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/24.jpg" alt="Gear 4">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/25.jpg" alt="Gear 5">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/26.jpg" alt="Gear 6">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/27.jpg" alt="Gear 7">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/28.jpg" alt="Gear 8">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/29.jpg" alt="Gear 9">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/30.jpg" alt="Gear 10">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/31.jpg" alt="Gear 11">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/32.jpg" alt="Gear 12">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/33.jpg" alt="Gear 13">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/34.jpg" alt="Gear 14">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/35.jpg" alt="Gear 15">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/36.jpg" alt="Gear 16">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/37.jpg" alt="Gear 17">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/38.jpg" alt="Gear 18">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-    </div>
+    <h2>Gear <button class="toggle-button" onclick="toggleSection('gear')">▼</button></h2>
+    <div class="grid-container" id="gear-container"></div>
 
-    <h2>Quickfixes</h2>
-    <div class="grid-container">
-        <!-- Repeat this block for each image in Quickfixes -->
-        <div class="grid-item">
-            <img src="images/39.jpg" alt="Quickfix 1">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/40.jpg" alt="Quickfix 2">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/41.jpg" alt="Quickfix 3">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/42.jpg" alt="Quickfix 4">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/43.jpg" alt="Quickfix 5">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/44.jpg" alt="Quickfix 6">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/45.jpg" alt="Quickfix 7">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/46.jpg" alt="Quickfix 8">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/47.jpg" alt="Quickfix 9">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/48.jpg" alt="Quickfix 10">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/49.jpg" alt="Quickfix 11">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/50.jpg" alt="Quickfix 12">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/51.jpg" alt="Quickfix 13">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/52.jpg" alt="Quickfix 14">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/53.jpg" alt="Quickfix 15">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-        <div class="grid-item">
-            <img src="images/54.jpg" alt="Quickfix 16">
-            <div class="counter" data-count="0">
-                <button onclick="changeCount(this, -1)">-</button>
-                <span>0</span>
-                <button onclick="changeCount(this, 1)">+</button>
-            </div>
-        </div>
-    </div>
+    <h2>Quickfixes <button class="toggle-button" onclick="toggleSection('quickfixes')">▼</button></h2>
+    <div class="grid-container" id="quickfixes-container"></div>
 
     <button onclick="openSelectedImages()">Create Deck</button>
     <button class="reset-button" onclick="resetAllCounts()">Reset All</button>
 
     <script>
         let totalSelected = 0;
+
+        const survivors = [
+            "images/00.jpg",
+            "images/01.jpg",
+            "images/02.jpg",
+            "images/03.jpg",
+            "images/04.jpg",
+            "images/05.jpg",
+            "images/06.jpg",
+            "images/07.jpg",
+            "images/08.jpg",
+            "images/09.jpg",
+            "images/10.jpg",
+            "images/11.jpg",
+            "images/12.jpg",
+            "images/13.jpg",
+            "images/14.jpg",
+            "images/15.jpg",
+            "images/16.jpg",
+            "images/17.jpg",
+            "images/18.jpg",
+            "images/19.jpg",
+            "images/20.jpg"
+        ];
+
+        const gear = [
+            "images/21.jpg",
+            "images/22.jpg",
+            "images/23.jpg",
+            "images/24.jpg",
+            "images/25.jpg",
+            "images/26.jpg",
+            "images/27.jpg",
+            "images/28.jpg",
+            "images/29.jpg",
+            "images/30.jpg",
+            "images/31.jpg",
+            "images/32.jpg",
+            "images/33.jpg",
+            "images/34.jpg",
+            "images/35.jpg",
+            "images/36.jpg",
+            "images/37.jpg",
+            "images/38.jpg"
+        ];
+
+        const quickfixes = [
+            "images/39.jpg",
+            "images/40.jpg",
+            "images/41.jpg",
+            "images/42.jpg",
+            "images/43.jpg",
+            "images/44.jpg",
+            "images/45.jpg",
+            "images/46.jpg",
+            "images/47.jpg",
+            "images/48.jpg",
+            "images/49.jpg",
+            "images/50.jpg",
+            "images/51.jpg",
+            "images/52.jpg",
+            "images/53.jpg",
+            "images/54.jpg"
+        ];
+
+        function createGridItems(containerId, images) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Clear existing content
+            images.forEach(src => {
+                const gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+                gridItem.innerHTML = `
+                    <div class="image-hover">
+                        <img src="${src}" alt="">
+                    </div>
+                    <div class="counter" data-count="0">
+                        <button onclick="changeCount(this, -1)">-</button>
+                        <span>0</span>
+                        <button onclick="changeCount(this, 1)">+</button>
+                    </div>
+                `;
+                container.appendChild(gridItem);
+            });
+        }
+
+        function adjustImagePosition(event) {
+            const img = event.target;
+            const rect = img.getBoundingClientRect();
+            const overflowRight = rect.right - window.innerWidth;
+            const overflowLeft = rect.left;
+            const overflowTop = rect.top;
+            const overflowBottom = rect.bottom - window.innerHeight;
+
+            if (overflowRight > 0) {
+                img.style.transform = `translateX(-${overflowRight}px) scale(1.5)`;
+            } else if (overflowLeft < 0) {
+                img.style.transform = `translateX(${Math.abs(overflowLeft)}px) scale(1.5)`;
+            } else if (overflowTop < 0) {
+                img.style.transform = `translateY(${Math.abs(overflowTop)}px) scale(1.5)`;
+            } else if (overflowBottom > 0) {
+                img.style.transform = `translateY(-${overflowBottom}px) scale(1.5)`;
+            } else {
+                img.style.transform = 'scale(1.5)';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createGridItems('survivors-container', survivors);
+            createGridItems('gear-container', gear);
+            createGridItems('quickfixes-container', quickfixes);
+
+            document.querySelectorAll('.grid-item img').forEach(img => {
+                img.addEventListener('mouseover', adjustImagePosition);
+                img.addEventListener('mouseout', (event) => {
+                    event.target.style.transform = 'scale(1)';
+                });
+            });
+        });
 
         function changeCount(button, change) {
             const counter = button.parentElement;
@@ -569,7 +174,7 @@
                 const count = parseInt(counter.getAttribute('data-count'));
                 if (count > 0) {
                     selectedImages.push({
-                        src: counter.previousElementSibling.src,
+                        src: counter.previousElementSibling.querySelector('img').src, // Fixed this line
                         count: count
                     });
                 }
@@ -583,7 +188,7 @@
                     <style>
                         .grid-container {
                             display: grid;
-                            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                            grid-template-columns: repeat(5, 1fr); /* Set to 5 columns */
                             gap: 10px;
                             padding: 10px;
                         }
@@ -591,8 +196,8 @@
                             text-align: center;
                         }
                         .grid-item img {
-                            width: 150px;
-                            height: 200px;
+                            width: 200px; /* Enlarged width */
+                            height: 300px; /* Enlarged height */
                         }
                         .export-button {
                             display: block;
@@ -620,6 +225,27 @@
                 </html>
             `);
             newWindow.document.close();
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(`${sectionId}-container`);
+            const button = document.querySelector(`button[onclick="toggleSection('${sectionId}')"]`);
+            if (section.style.display === 'none' || section.style.display === '') {
+                section.style.display = 'grid';
+                button.textContent = '▼';
+            } else {
+                section.style.display = 'none';
+                button.textContent = '►';
+            }
+            // Set button background colors and icon color based on sectionId
+            if (sectionId === 'survivors') {
+                button.style.backgroundColor = '#d9725e';
+            } else if (sectionId === 'gear') {
+                button.style.backgroundColor = '#593129';
+            } else if (sectionId === 'quickfixes') {
+                button.style.backgroundColor = '#f19231';
+            }
+            button.style.color = 'white'; // Set icon color to white
         }
     </script>
 </body>
